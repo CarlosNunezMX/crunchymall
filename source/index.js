@@ -11,4 +11,4 @@ app.use(cors('*'));
 app.use('/api', APIRouter)
 
 
-app.listen(4000)
+app.listen(process.env.PORT || 4000)
