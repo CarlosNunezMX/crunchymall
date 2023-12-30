@@ -8,7 +8,14 @@ SessionRouter.post('/', (req, res) => {
         data: {
             session_id: Math.random().toString(32),
             auth: {
-                user: Math.random().toString(32),
+                user: {
+                    user_id: 'test',
+                    username: "Nuñez",
+                    email: "test@test.com",
+                    premium: true,
+                    first_name: "Carlos",
+                    last_name: "Nunez"
+                }
             }
         }
     })
