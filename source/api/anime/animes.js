@@ -13,7 +13,7 @@ AnimeRouter.post('/', async (req, res) => {
                 name: e.Title,
                 description: e.Description,
                 portrait_image: {
-                    large_url: !req.isWiiU ? e.Image : process.env["PROXY_SERVER"] + `?url=${e.Image}`
+                    large_url: e.Image
                 },
                 series_id: e.Id,
                 media_type: ConvertName2Crunchyroll(e.Type),

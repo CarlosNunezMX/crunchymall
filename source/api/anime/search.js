@@ -15,7 +15,7 @@ SearchRouter.post('/', async (req, res) => {
                 (serie) => ({
                     series_id: serie.Id,
                     portrait_image: {
-                        full_url: !req.isWiiU ? serie.Image : process.env["PROXY_SERVER"] + `?url=${serie.Image}`
+                        full_url: serie.Image,
                     },
                     name: serie.Title,
                     in_queue: false

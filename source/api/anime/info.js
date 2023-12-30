@@ -12,7 +12,7 @@ InfoRouter.post('/', async (req, res) => {
         return res.json({
             data: {
                 portrait_image: {
-                    full_url: !req.isWiiU ? Image : process.env["PROXY_SERVER"] + `?url=${Image}`
+                    full_url: Image
                 }
             }
         })

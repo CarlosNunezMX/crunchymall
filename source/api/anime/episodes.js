@@ -15,8 +15,8 @@ EpisodeRouter.post('/', async (req, res) => {
             available: true,
             description: info.Description,
             screenshot_image: {
-                fwidestar_url: !req.isWiiU ? episode.Image : process.env["PROXY_SERVER"] + `?url=${episode.Image}`,
-                fwide_url: !req.isWiiU ? episode.Image : process.env["PROXY_SERVER"] + `?url=${episode.Image}`
+                fwidestar_url: episode.Image,
+                fwide_url: episode.Image
             },
             media_id: episode.Id,
             free_available: true,
