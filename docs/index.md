@@ -25,9 +25,9 @@ Make your own wrapper, here is a few things whose you would know before start co
   - [Examples/Translations.json](/docs/typescript/examples/Translations.json) - Example with original translations.
 - [Version.d.ts](/docs/typescript/Version.d.ts) - This route is visited for getting some info for decide if start to download files from remote server
 - [StartSession.d.ts](/docs/typescript/StartSession.d.ts) - This route is for discover who is the user.
+- [list_locales](/docs/typescript/Info.d.ts) - Things what Wii U Request for screenshots, and some anime details.
 
 ***Pending declarations***
-- ***list_locales*** - Im going to research this in the source code.
 - ***log_first_launch*** - I think it is when you open crunchyroll app for first time
 - ***log_user_search*** - Same up
 - [***Info***](/docs/typescript/Info.d.ts) - I've not all data for it
