@@ -2,7 +2,7 @@
  * @author CarlosNunezMX
  * @description Types for searching, it includes the base search query, it hasn't types for genres and drama
  */
-import { CommonQuery,  Response } from "./Common";
+import { CommonQuery,  Response } from "./Common.js";
 
 export interface SearchQuery extends CommonQuery {
     /**

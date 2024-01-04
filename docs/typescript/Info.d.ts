@@ -1,13 +1,21 @@
-import { CommonQuery, Response } from "./Common";
+import { CommonQuery, Response } from "./Common.js";
 
-export interface SeriesPortraitImage_InfoReq extends CommonQuery {
+export interface InfoReq extends CommonQuery {
     series_id: string;
 }
 
-export type SeriesPortraitImage_Info = {
+export type Info = {
+    description: string;
+    in_queue: boolean;
+    media_count: number;
+    year: number;
+    publisher_name: string;
+    name: string;
     portrait_image: {
         full_url: string;
+        fwidestar_url: episode.Image;
+        fwide_url: episode.Image;
     } 
 }
 
-export type SeriesPortraitImage_InfoResponse = Response<SeriesPortraitImage_Info>;
+export type InfoResponse = Response<Partial<Info>>;

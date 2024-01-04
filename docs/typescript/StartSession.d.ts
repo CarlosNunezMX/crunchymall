@@ -1,5 +1,5 @@
 import e from "express";
-import { Response } from "./Common";
+import { Response } from "./Common.js";
 
 export type SessionRequest = {
     auth: unknown;

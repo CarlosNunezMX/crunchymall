@@ -1,11 +1,11 @@
-import { Router } from "express";
-import { GetAnimeInfo } from '@carlosnunezmx/animeflv'
-export const EpisodeRouter = Router();
-
-EpisodeRouter.post('/', async (req, res) => {
-    let { series_id } = req.body;
-    let info = await GetAnimeInfo(series_id);
-    return res.json({
+import { Hono } from "hono";
+import { GetAnimeInfo } from "@carlosnunezmx/animeflv";
+export const ListMediaRouter = new Hono();
+ListMediaRouter.post('/', async (c) => {
+    // @ts-ignore
+    const { series_id, limit } = await c.req.parseBody();
+    const info = await GetAnimeInfo(series_id);
+    return c.json({
         data: info.Episodes.map((episode, i) => ({
             series_id: info.Id,
             collection_name: info.Title,
@@ -22,7 +22,6 @@ EpisodeRouter.post('/', async (req, res) => {
             free_available: true,
             premium_available: true,
             premium_only: false,
-            episode_number: i + 1,
         }))
-    })
-})
+    });
+});

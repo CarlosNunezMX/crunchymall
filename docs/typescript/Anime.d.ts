@@ -5,7 +5,7 @@
  * @license MIT
 */
 
-import { Response, MediaType, CommonQuery } from "./Common";
+import { Response, MediaType, CommonQuery } from "./Common.js";
 
 export type Filter = "popular" | "simulcast" | "updated" | "alpha";
 

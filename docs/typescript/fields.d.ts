@@ -4,8 +4,9 @@
  */
 
 export type SeriesFields = 
-"series.portrait_image" | "series.series_id" | "series.in_queue" |
-"series.in_queue" | "series.name" | "series.media_type" | "series.description";
+"series.portrait_image" | "series.series_id" | "series.in_queue" | "series.media_count" |
+"series.in_queue" | "series.name" | "series.media_type" | "series.description" | "series.year" |
+"series.publisher_name";
 
 export type CollectionFields = 
 "collection.name" | "collection.season" | "collection.collection_id";
