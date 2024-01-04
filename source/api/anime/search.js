@@ -5,7 +5,7 @@ import { ConvertName2Crunchyroll } from './utils/type.js';
 export const SearchRouter = Router();
 
 SearchRouter.post('/', async (req, res) => {
-    /** @type {import('./search.js').SearchQuery} */
+    /** @type {import('../../../docs/typescript/Common.js').CommonQuery} */
     let body = req.body;
     let Results = await Search(body.q);
     console.log(Results);
