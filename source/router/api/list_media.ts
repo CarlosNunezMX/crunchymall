@@ -25,6 +25,7 @@ ListMediaRouter.post('/', async c => {
             free_available: true,
             premium_available: true,
             premium_only: false,
+            playhead: i + 1
         }))
     })
 })

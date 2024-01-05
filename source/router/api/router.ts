@@ -9,6 +9,8 @@ import { CatsRouter } from "./cats.js";
 import { ClientOptionsRouter } from "./client_options.js";
 import { InfoRouter } from "./info.js";
 import { ListMediaRouter } from "./list_media.js";
+import { ListAdsRouter } from "./listAds.js";
+import { FreeTrialInfoRouter } from "./freeTrialInfo.js";
 
 export const API_ROUTER = new Hono()
 
@@ -23,3 +25,5 @@ API_ROUTER.route('/categories', CatsRouter)
 API_ROUTER.route('/client_options', ClientOptionsRouter)
 API_ROUTER.route('/info', InfoRouter)
 API_ROUTER.route('/list_media', ListMediaRouter)
+API_ROUTER.route('/list_ads', ListAdsRouter);
+API_ROUTER.route('/free_trial_info', FreeTrialInfoRouter);

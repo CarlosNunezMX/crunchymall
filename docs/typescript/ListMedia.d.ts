@@ -6,7 +6,8 @@ export interface ListMediaRequest extends CommonQuery {
 }
 
 export type ListMediaItem = {
-    series_id: string,
+    series_id: string;
+    playhead: number;
     collection_name: string,
     episode_number: number,
     name: string,
