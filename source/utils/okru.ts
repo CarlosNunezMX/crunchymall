@@ -53,7 +53,10 @@ export async function OkRUSources(url: string){
     });
 
     const parsed: OkRuResponse = await data.json();
-
+    if(!parsed.medias || !parsed || parsed.medias.length === 0){
+        console.log(!parsed.medias, !parsed, parsed.medias.length === 0);
+        return;
+    }
     // find more quality
     const available = parsed.medias.filter(e => e.videoAvailable);
     if(available.length === 0)
