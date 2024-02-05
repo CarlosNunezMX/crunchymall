@@ -45,11 +45,12 @@ routerProxy.all("/", async (req, res) => {
 
 routerProxy.post('/gTranslate', async (req, res) => {
   const body = req.body;
+  const customURL = req.query.customURL;
   if (!body.source_lang || !body.target_lang || !body.text)
     return res.status(400).json({
       message: "ProxyError: All fields are required!",
     });
-  const response = await fetch('https://script.google.com/macros/s/AKfycbz2aP-sYT23oiwBA-7OSP0YT1aiBlbELz4aPnXEYFxoRF4QeDtS7PmDzYOBy7JGXerz/exec', {
+  const response = await fetch(customURL ?? process.env["DEFAULT_URL"], {
     method: "POST",
     body: new URLSearchParams(body).toString(),
     headers
