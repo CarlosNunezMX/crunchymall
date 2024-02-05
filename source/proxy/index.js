@@ -3,9 +3,9 @@ import fetch from "node-fetch"
 import { Agent } from 'https'
 
 const headers = {
-  'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0',
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0',
   'Content-Type': 'application/x-www-form-urlencoded',
-};  
+};
 
 export const routerProxy = Router();
 const httpAgent = new Agent({
@@ -44,18 +44,32 @@ routerProxy.all("/", async (req, res) => {
 
 
 routerProxy.post('/gTranslate', async (req, res) => {
-  const body = req.body;
-  const customURL = req.query.customURL;
-  if (!body.source_lang || !body.target_lang || !body.text)
-    return res.status(400).json({
-      message: "ProxyError: All fields are required!",
-    });
-  const response = await fetch(customURL ?? process.env["DEFAULT_URL"], {
-    method: "POST",
-    body: new URLSearchParams(body).toString(),
-    headers
-  })
-
-  const json = await response.json();
-  return res.json(json);
+  try {
+    const body = req.body;
+    const customURL = req.query.customURL;
+    if (!body.source_lang || !body.target_lang || !body.text)
+      return res.status(400).json({
+        message: "ProxyError: All fields are required!",
+      });
+    const response = await fetch(customURL ?? process.env["DEFAULT_URL"], {
+      method: "POST",
+      body: new URLSearchParams(body).toString(),
+      headers
+    })
+    if (!response.ok)
+      res.status(404).json({
+        message: "ProxyError: Problem found in request",
+        statusCode: response.status,
+      })
+    const json = await response.json();
+    return res.json(json);
+  }
+  catch(err){
+    res.status(500)
+      .json({
+        message: "ProxyError: Error was fount in request sending!",
+        error: err,
+        easterEgg: 'Wanna excuse meeeeeee!'
+      })
+  }
 })
