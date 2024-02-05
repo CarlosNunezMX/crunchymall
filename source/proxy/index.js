@@ -47,6 +47,7 @@ routerProxy.post('/gTranslate', async (req, res) => {
   try {
     const body = req.body;
     const customURL = req.query.customURL;
+    console.log(process.env["DEFAULT_URL"]);
     if (!body.source_lang || !body.target_lang || !body.text)
       return res.status(400).json({
         message: "ProxyError: All fields are required!",
@@ -56,15 +57,17 @@ routerProxy.post('/gTranslate', async (req, res) => {
       body: new URLSearchParams(body).toString(),
       headers
     })
-    if (!response.ok)
-      res.status(404).json({
+    if (!response.ok && res.status >= 400){
+      console.log('ProxyError: Problem found in request');
+      return res.status(404).json({
         message: "ProxyError: Problem found in request",
         statusCode: response.status,
-      })
+      })}
     const json = await response.json();
-    return res.json(json);
+    return res.json(json);  
   }
   catch(err){
+    console.log(err);
     res.status(500)
       .json({
         message: "ProxyError: Error was fount in request sending!",
